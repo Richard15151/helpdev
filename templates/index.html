@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistente de Programação</title>
+</head>
+<body>
+    <h1>Assistente de Programação</h1>
+
+    <form method="POST">
+        <label for="pergunta">Digite sua dúvida:</label>
+        <input type="text" name="pergunta" id="pergunta" value="{{ pergunta }}" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if pergunta %}
+        <h2>Resultados do Stack Overflow:</h2>
+        {% if resultados_stackoverflow %}
+            <ul>
+            {% for resultado in resultados_stackoverflow %}
+                <li>
+                    <strong>{{ resultado.titulo }}</strong><br>
+                    <a href="{{ resultado.link }}" target="_blank">Ver pergunta completa</a>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nenhum resultado encontrado no Stack Overflow.</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
