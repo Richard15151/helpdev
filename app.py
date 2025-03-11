@@ -46,7 +46,7 @@ def index():
         pergunta = request.form['pergunta']
         resultados_stackoverflow = buscar_stackoverflow(pergunta)
 
-    return render_template('index.html', pergunta=pergunta, resultados_stackoverflow=resultados_stackoverflow,)
+    return render_template('index2.html', pergunta=pergunta, resultados_stackoverflow=resultados_stackoverflow,)
 
 if __name__ == "__main__":
     app.run(debug=True)
