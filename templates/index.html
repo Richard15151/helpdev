@@ -1,33 +1,68 @@
 <!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assistente de Programação</title>
-</head>
-<body>
-    <h1>Assistente de Programação</h1>
-
-    <form method="POST">
-        <label for="pergunta">Digite sua dúvida:</label>
-        <input type="text" name="pergunta" id="pergunta" value="{{ pergunta }}" required>
-        <button type="submit">Buscar</button>
-    </form>
-
-    {% if pergunta %}
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HelpDev</title>
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
+  <body>
+    <header>
+      <img src="../static/img/HELPDEV.png" alt="" />
+    </header>
+    <main>
+      <div class="container">
+        <h1>Assistente de pesquisa</h1>
+        <p>
+          Digite abaixo sua dúvida e ela será consultada nas comunidades do
+          StackOverflow e do Reddit
+        </p>
+        <form method="POST">
+          <label for="duvida">Informe sua dúvida:</label>
+          <input
+            type="text"
+            name="pergunta"
+            id="pergunta"
+            value="{{ pergunta }}"
+            required
+          />
+          <button type="submit">Buscar</button>
+        </form>
+        {% if pergunta %}
         <h2>Resultados do Stack Overflow:</h2>
-        {% if resultados_stackoverflow %}
-            <ul>
-            {% for resultado in resultados_stackoverflow %}
-                <li>
-                    <strong>{{ resultado.titulo }}</strong><br>
-                    <a href="{{ resultado.link }}" target="_blank">Ver pergunta completa</a>
-                </li>
-            {% endfor %}
-            </ul>
+        {% if resultados_stack %}
+        <ul>
+          {% for resultado in resultados_stack %}
+          <li>
+            <strong>{{ resultado.titulo }}</strong><br />
+            <a href="{{ resultado.link }}" target="_blank"
+              >Ver pergunta completa na comunidade</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
         {% else %}
-            <p>Nenhum resultado encontrado no Stack Overflow.</p>
-        {% endif %}
-    {% endif %}
-</body>
+        <p>Nenhum resultado encontrado no Stack Overflow.</p>
+        {% endif %} {% endif %}
+        <h2>Resultados do Reddit:</h2>
+        {% if resultados_reddit %}
+        <ul>
+          {% for resultado in resultados_reddit %}
+          <li>
+            <strong>{{ resultado.titulo }}</strong><br />
+            <a href="{{ resultado.link }}" target="_blank"
+              >Ver pergunta completa no Reddit</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>Nenhum resultado encontrado no Reddit.</p>
+        {% endif %} 
+      </div>
+    </main>
+    <footer>
+      <h2>Feito por Richard</h2>
+    </footer>
+  </body>
 </html>
