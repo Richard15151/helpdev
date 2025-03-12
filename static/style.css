@@ -8,6 +8,9 @@ body {
     display: flex;
     flex-direction: column;
 }
+main{
+    height: 70vh;
+}
 
 header, footer{
     height: 15vh;

@@ -12,40 +12,46 @@
     </header>
     <main>
       <div class="container">
-        <h1>Assistente de pesquisa</h1>
-        <p>
-          Digite abaixo sua dúvida e ela será consultada nas comunidades do
-          StackOverflow e do Reddit
-        </p>
-        <form method="POST">
-          <label for="duvida">Informe sua dúvida:</label>
-          <input
-            type="text"
-            name="pergunta"
-            id="pergunta"
-            value="{{ pergunta }}"
-            required
-          />
-          <button type="submit">Buscar</button>
-        </form>
-        {% if pergunta %}
-        <h2>Resultados do Stack Overflow:</h2>
-        {% if resultados_stack %}
-        <ul>
-          {% for resultado in resultados_stack %}
-          <li>
+        <div class="pergunta">
+          <h1>Assistente de pesquisa</h1>
+          <p>
+            Digite abaixo sua dúvida e ela será consultada nas comunidades do
+            StackOverflow e do Reddit
+          </p>
+          <form method="POST">
+            <label for="duvida">Informe sua dúvida:</label>
+            <input
+              type="text"
+              name="pergunta"
+              id="pergunta"
+              value="{{ pergunta }}"
+              required
+            />
+            <button type="submit">Buscar</button>
+          </form>
+        </div>
+        <div class="resultadosstack">
+          {% if pergunta %}
+          <h2>Resultados do Stack Overflow:</h2>
+          {% if resultados_stack %}
+            <ul>
+            {% for resultado in resultados_stack %}
+            <li>
             <strong>{{ resultado.titulo }}</strong><br />
             <a href="{{ resultado.link }}" target="_blank"
               >Ver pergunta completa na comunidade</a
             >
-          </li>
-          {% endfor %}
-        </ul>
+            </li>
+            {% endfor %}
+            </ul>
         {% else %}
         <p>Nenhum resultado encontrado no Stack Overflow.</p>
-        {% endif %} {% endif %}
+        {% endif %}{% endif %}
+        </div>
+        <div class="resultadosreddit">
+          {% if pergunta %}
+          {% if resultados_reddit %}
         <h2>Resultados do Reddit:</h2>
-        {% if resultados_reddit %}
         <ul>
           {% for resultado in resultados_reddit %}
           <li>
@@ -58,7 +64,8 @@
         </ul>
         {% else %}
         <p>Nenhum resultado encontrado no Reddit.</p>
-        {% endif %} 
+        {% endif %}{% endif %}
+        </div>
       </div>
     </main>
     <footer>
