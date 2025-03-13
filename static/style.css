@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* border: 1px solid red; */
 }
 body {
     height: 100vh;
@@ -19,3 +20,45 @@ header, footer{
     justify-content: center;
     align-items: center;
 }
+footer{
+    flex-direction: column;
+    font-family: "Nunito Sans", sans-serif;
+    color: aliceblue;
+}
+.logo{
+    height: 300px;
+    width: 400px;
+}
+.gif1{
+    height: 80px;
+    width: 80px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.resultados{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.pergunta{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.resultadosstack, .resultadosreddit{
+    width: 45%;
+    max-width: 80%;
+    margin: 20px;
+}
+

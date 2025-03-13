@@ -1,7 +1,6 @@
 from googletrans import Translator
 import requests
 
-
 def traduzir_para_ingles(texto_pt):
     translator = Translator()
     traducao = translator.translate(texto_pt, src='pt', dest='en')
@@ -21,7 +20,7 @@ def buscar_stackoverflow(termo):
         data = response.json()
         if "items" in data:
             resultados = []
-            for item in data["items"][:5]:  # Limita a 5 resultados
+            for item in data["items"][:4]:  
                 titulo = item['title']
                 link = item['link']
                 titulo_traduzido = traduzir_para_portugues(titulo)
@@ -40,7 +39,7 @@ def buscar_reddit(termo, subreddit="learnprogramming"):
     if response.status_code == 200:
         data = response.json()
         resultados = []
-        for post in data.get("data", {}).get("children", [])[:5]:  # Limita a 5 resultados
+        for post in data.get("data", {}).get("children", [])[:4]:  
             titulo = post["data"].get("title", "")
             titulo_traduzido = traduzir_para_portugues(titulo)
             link = "https://www.reddit.com" + post["data"].get("permalink", "")
